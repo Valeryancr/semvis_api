@@ -1,0 +1,166 @@
+# ===========================================
+# GITIGNORE RECOMENDADO PARA SEMVIS-API
+# ===========================================
+
+# Archivos de compilación
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ===========================================
+# ARCHIVOS SENSIBLES - NO SUBIR A GITHUB
+# ===========================================
+
+# Variables de entorno y configuración local
+.env
+.env.*
+!.env.example
+application-local.yml
+application-prod.yml
+application-*.yml
+*.properties
+!application.yml
+
+# Credenciales y secretos
+secrets/
+*.key
+*.pem
+*.p12
+*.jks
+*.pfx
+*.cer
+*.crt
+
+# Archivos de base de datos local
+*.db
+*.sqlite
+*.sqlite3
+*.sql.backup
+
+# ===========================================
+# IDEs y Editores
+# ===========================================
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+*.code-workspace
+
+# ===========================================
+# Sistema Operativo
+# ===========================================
+
+### macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### Windows ###
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+### Linux ###
+*~
+.directory
+
+# ===========================================
+# Logs y Archivos Temporales
+# ===========================================
+
+# Logs
+logs/
+*.log
+*.log.*
+*.log.gz
+
+# Archivos temporales
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+
+# ===========================================
+# Docker y Contenedores
+# ===========================================
+
+# No ignorar el Dockerfile, pero sí los archivos de override local
+docker-compose.override.yml
+.dockerignore
+
+# ===========================================
+# Dependencias y Package Managers
+# ===========================================
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# ===========================================
+# Archivos de Testing y Coverage
+# ===========================================
+
+# Coverage reports
+coverage/
+*.coverage
+.nyc_output/
+jacoco.exec
+
+# Test results
+test-results/
+*.test
+
+# ===========================================
+# Otros
+# ===========================================
+
+# Archivos grandes o binarios
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Notas personales
+TODO.txt
+NOTES.txt
+notes/
