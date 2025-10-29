@@ -42,12 +42,17 @@ public class RequestTimingFilter extends OncePerRequestFilter {
                 String username = auth.getName();
                 String ip = request.getRemoteAddr();
 
-                Connection connection = DataSourceUtils.getConnection(dataSource);
-                try (Statement stmt = connection.createStatement()) {
-                    stmt.execute("SET semvis_sk.app_username = '" + username.replace("'", "''") + "'");
-                    stmt.execute("SET semvis_sk.app_ip = '" + ip + "'");
+                Connection connection = null;
+                try {
+                    connection = DataSourceUtils.getConnection(dataSource);
+                    try (Statement stmt = connection.createStatement()) {
+                        stmt.execute("SET semvis_sk.app_username = '" + username.replace("'", "''") + "'");
+                        stmt.execute("SET semvis_sk.app_ip = '" + ip + "'");
+                    }
                 } catch (Exception ex) {
                     LOG.warn("No se pudo setear app_username en la sesión PostgreSQL", ex);
+                } finally {
+                    DataSourceUtils.releaseConnection(connection, dataSource);
                 }
             }
         } catch (Exception ignored) {
