@@ -50,7 +50,7 @@ info:
 
 app:
   security:
-    jwtSecret: ${JWT_SECRET:CHANGE_THIS_TO_A_SECURE_SECRET_KEY_IN_PRODUCTION}
+    jwtSecret: ${JWT_SECRET}
     jwtExpirationMinutes: ${JWT_EXP_MINUTES:120}
     cors:
       allowedOrigins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200,http://127.0.0.1:4200}
@@ -93,8 +93,15 @@ spring:
     hikari:
       maximum-pool-size: ${DB_POOL_MAX:10}
       minimum-idle: ${DB_POOL_MIN:2}
-      idle-timeout: ${DB_IDLE_MS:60000}
-      connection-timeout: ${DB_CONN_TIMEOUT_MS:30000}
+      idle-timeout: 30000
+      max-lifetime: 600000
+      connection-timeout: 20000
+      validation-timeout: 5000
+      leak-detection-threshold: 20000
+      keepalive-time: 300000
+      connection-test-query: SELECT 1
+      initialization-fail-timeout: -1
+      auto-commit: true
 
 logging:
   level:
@@ -114,6 +121,12 @@ spring:
       minimum-idle: ${DB_POOL_MIN}
       idle-timeout: ${DB_IDLE_MS}
       connection-timeout: ${DB_CONN_TIMEOUT_MS}
+      validation-timeout: 5000
+      leak-detection-threshold: 20000
+      keepalive-time: 300000
+      connection-test-query: SELECT 1
+      initialization-fail-timeout: -1
+      auto-commit: true
 
 logging:
   level:
